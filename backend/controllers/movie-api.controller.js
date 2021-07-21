@@ -7,6 +7,7 @@ exports.getMovies = asyncHandler(async (req, res) => {
       params: {
         api_key: process.env.MOVIE_API_KEY,
         query: req.params.search.replace(" ", "+"),
+        page: req.params.page
       },
     })
     .then((response) => res.json(response.data));
