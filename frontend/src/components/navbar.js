@@ -3,9 +3,21 @@ import { NavLink } from "react-router-dom";
 function Navbar({ username, userPicture }) {
   return (
     <div className="navbar">
-      <NavLink to="/" className="link" activeClassName="linkActive">
+      <NavLink to="/home" className="link" activeClassName="linkActive">
         Home
       </NavLink>
+
+      {username && (
+        <NavLink to="/review" className="link" activeClassName="linkActive">
+          Review
+        </NavLink>
+      )}
+
+      {!username && (
+        <NavLink to="/review" className="linkHidden">
+          Review
+        </NavLink>
+      )}
 
       <div className="loginContainer">
         {!username && (

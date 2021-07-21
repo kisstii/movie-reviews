@@ -14,7 +14,7 @@
   width: 100vw;
   height: 70px;
   background-color: #4285f4;
-  z-index: 1;
+  z-index: 10;
 }
 
 .loginContainer {
@@ -87,7 +87,7 @@
   box-shadow: 0 0 9px white;
 }
 
-/* .linkHidden {
+.linkHidden {
   padding: 4px 8px 6px;
   margin-left: 30px;
   min-width: 82px;
@@ -102,7 +102,7 @@
   cursor: default;
   pointer-events: none;
   user-select: none;
-} */
+}
 
 .loggedInText {
   display: flex;
@@ -130,18 +130,17 @@
   border-radius: 50%;
 }
 
-/* 
 .actionButton {
   position: relative;
-  right: 60px;
+
   padding: 4px 8px 6px;
   height: 35px;
-  margin: 20px 10px;
+  margin: 20px 0;
   text-decoration: none;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
   color: #4285f4;
   border: none;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   font-weight: 700;
   font-size: 1.2em;
   text-align: center;
@@ -154,34 +153,33 @@
 }
 
 .actionButton:active {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-
-
-
-
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px auto;
+  background-color: rgba(200, 230, 200, 0.7);
+  box-shadow: none;
 }
 
 .inputData {
+  outline: none;
   margin: 30px 0 0;
-  padding: 3px;
-  margin: 20px 10px;
-  width: 350px;
+  padding: 3px 5px;
+  margin: 20px 0;
+  width: 400px;
   height: 35px;
   font-weight: 700;
   font-size: 1.2em;
   color: rgb(104, 104, 104);
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 0 0 5px;
+  z-index: 1;
+  user-select: auto;
+  background-color: rgb(235, 235, 235);
 }
 
 .inputData::placeholder {
   color: gray;
+}
+
+.inputData:focus {
+  background-color: rgb(255, 255, 255);
 }
 
 .form {
@@ -192,15 +190,17 @@
 
 .formContainer {
   position: fixed;
-  top: 70px;
+  left: -5vw;
+  margin-top: 70px;
   display: flex;
   height: 70px;
-  width: 100vw;
+  width: 110vw;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #79a9f7;
-  z-index: 1;
+  background-color: #4285f4;
+  box-shadow: 0 5px 5px #4285f4, 0 10px 10px #4285f4, 0 15px 15px #4285f4, 0 20px 20px #4285f4, 0 25px 25px #4285f4, 0 35px 35px #4285f4, 0 45px 45px #4285f4, 0 55px 55px #4285f4;
+  z-index: 10;
 }
 
 .alertBar {
@@ -209,18 +209,65 @@
   width: 100vw;
   display: flex;
   margin-bottom: 30px;
-  height: 60px;
+  height: 55px;
   justify-content: center;
   align-items: center;
-  background-color: #a4c5fb;
-  box-shadow: 0 15px 15px #a4c5fb;
-  z-index: 1;
+  z-index: 10;
 }
 
 .alert {
-  color: rgb(200, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 1.2em;
+}
+
+.mainBodyContainer {
+  position: absolute;
+  top: 240px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movieContainer {
+  width: 300px;
+  height: 300px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+  margin: 30px 25px;
+  background-color: rgb(248, 255, 187);
+  cursor: pointer;
+}
+
+.movieContainer:hover {
+  background-color: rgb(233, 240, 176);
+  box-shadow: -5px -5px 5px rgba(119, 81, 81, 0.6);
+}
+
+.movieImage {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+}
+
+.movieTitle {
+  position: relative;
+  padding: 3px 8px;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  text-shadow: 5 0 5px black, 0 0 8px black;
+  color: white;
+  z-index: 2;
+}
+
+/* 
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
 }
 
 .groupContainer {
@@ -241,24 +288,7 @@
   box-shadow: none;
 }
 
-.userContainer {
-  position: relative;
-  display: flex;
-  width: 356px;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  margin: 30px 25px;
-  padding: 15px 20px;
-  border-radius: 10px;
-  background-color: rgb(248, 255, 187);
-  cursor: pointer;
-}
 
-.userContainer:hover {
-  background-color: rgb(230, 236, 173);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
 
 .joinUserContainer {
   display: flex;
@@ -311,12 +341,7 @@
   background-color: rgb(219, 197, 169);
 }
 
-.mainBodyContainer {
-  position: absolute;
-  top: 240px;
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 .joinFormContainer {
   position: fixed;

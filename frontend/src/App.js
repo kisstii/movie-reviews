@@ -2,6 +2,7 @@ import "./App.css";
 import jwt_decode from "jwt-decode";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
+import Review from "./components/review";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import { Route } from "react-router-dom";
@@ -14,9 +15,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
-
     let decodedToken;
-
     if (token !== "undefined" && token !== "null" && token !== undefined && token !== null) {
       decodedToken = jwt_decode(token);
       setUsername(decodedToken.user_given_name);
@@ -29,8 +28,11 @@ function App() {
   return (
     <div>
       <Navbar isLoggedIn={isLoggedIn} username={username} userPicture={userPicture} />
-      <Route exact path="/">
+      <Route exact path="/home">
         <Home />
+      </Route>
+      <Route exact path="/review">
+        <Review />
       </Route>
       <Route exact path="/login" component={() => <Login setUsername={setUsername} setUserPicture={setUserPicture} setIsLoggedIn={setIsLoggedIn} />} />
       <Route exact path="/logout" component={() => <Logout setUsername={setUsername} setUserPicture={setUserPicture} setIsLoggedIn={setIsLoggedIn} />} />

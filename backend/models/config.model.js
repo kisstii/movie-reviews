@@ -10,7 +10,7 @@ const configSchema = new mongoose.Schema({
   still_sizes: [{ type: String }],
 });
 
-module.exports = mongoose.model("Config", configSchema, "config");
+module.exports = mongoose.model("Config", configSchema, "configs");
 
 /*
 MOVIE_API_CONFIG = {
