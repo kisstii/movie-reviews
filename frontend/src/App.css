@@ -132,7 +132,6 @@
 
 .actionButton {
   position: relative;
-
   padding: 4px 8px 6px;
   height: 35px;
   margin: 20px 0;
@@ -242,6 +241,7 @@
   position: absolute;
   height: 300px;
   width: 300px;
+  border: thin solid white;
   object-fit: cover;
 }
 
@@ -304,4 +304,37 @@
   background-color: black;
   box-shadow: 115px 0 115px black, 105px 0 105px black, 95px 0 95px black, 85px 0 85px black, 80px 0 80px black, 75px 0 75px black, 70px 0 70px black, 65px 0 65px black;
   z-index: 15;
+}
+
+.reviewButtonContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+  left: 20px;
+  top: 215px;
+}
+
+.reviewButton {
+  padding: 4px 4px 6px;
+  width: 80px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 7px white;
+}
+
+.reviewButton:hover {
+  background-color: black;
+  box-shadow: 0 0 3px white, 0 0 7px white, 0 0 15px white;
+}
+
+.reviewButton:active {
+  background-color: rgb(180, 180, 180);
+  box-shadow: 0 0 7px white;
 }
