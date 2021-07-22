@@ -1,7 +1,7 @@
 import noImage from "../img/no-image.png";
 import Review from "./review";
 
-function Movie({ movie_title, movie_id, backdrop_path, poster_path, setShowReviewForm, setCurrentMovieId, showReviewForm, setCurrentTitle }) {
+function Movie({ movie_title, movie_id, backdrop_path, poster_path, setShowReviewForm, setCurrentMovieId, showReviewForm, setCurrentTitle, setShowAllReview }) {
   return (
     <div className="movieContainer">
       {<img className="noImage" src={noImage} alt="no" />}
@@ -15,6 +15,7 @@ function Movie({ movie_title, movie_id, backdrop_path, poster_path, setShowRevie
         setCurrentMovieId={setCurrentMovieId}
         showReviewForm={showReviewForm}
         setCurrentTitle={setCurrentTitle}
+        setShowAllReview={setShowAllReview}
       />
     </div>
   );

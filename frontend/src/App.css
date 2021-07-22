@@ -218,7 +218,6 @@
   display: flex;
   justify-content: center;
   width: 90vw;
-
   flex-wrap: wrap;
 }
 
@@ -271,9 +270,9 @@
   margin: 0 calc(50vw - 150px);
   height: 25px;
   width: 300px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(to right, rgba(0, 71, 153, 1) 0%, rgba(214, 214, 214, 1) 32%, rgba(201, 201, 201, 1) 68%, rgba(0, 71, 153, 1) 100%);
   border-radius: 15px;
-  box-shadow: 0 0 3px white, 0 0 6px white, 0 0 9px white, 0 0 15px white;
+  box-shadow: 0 0 25px white;
   z-index: 20;
 }
 
@@ -294,7 +293,7 @@
 }
 
 .pageNumber {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   transform: translate(0, -3px);
 }
 
@@ -367,9 +366,10 @@
   padding: 5px 10px;
   min-height: 25px;
   width: 500px;
-  background-color: rgb(255, 198, 188);
+  background: linear-gradient(to right, rgb(255, 221, 183) 0%, rgb(243, 243, 243) 25%, rgb(243, 243, 243) 50%, rgb(129, 183, 245) 75%, rgb(255, 255, 255) 100%);
   font-weight: 700;
   font-size: 1em;
+  box-shadow: 0 0 3px white, 0 0 7px white, 0 0 15px white, 0 0 25px white, 0 0 37px white, 0 0 50px white;
 }
 
 .review {

@@ -5,6 +5,7 @@ import next from "../img/next.png";
 import fastForward from "../img/fast-forward.png";
 import fastBackward from "../img/fast-backward.png";
 import ReviewForm from "./reviewForm";
+import ReadReviews from "./readReviews";
 
 function MovieList() {
   const [search, setSearch] = useState("");
@@ -15,6 +16,7 @@ function MovieList() {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [currentMovieId, setCurrentMovieId] = useState("");
   const [currentTitle, setCurrentTitle] = useState("");
+  const [showAllReview, setShowAllReview] = useState(false);
 
   const searchMovieFirst = () => {
     const token = localStorage.getItem("accessToken");
@@ -96,6 +98,7 @@ function MovieList() {
                 showReviewForm={showReviewForm}
                 setCurrentMovieId={setCurrentMovieId}
                 setCurrentTitle={setCurrentTitle}
+                setShowAllReview={setShowAllReview}
               />
             ))}
           {showReviewForm && (
@@ -105,6 +108,17 @@ function MovieList() {
               setCurrentMovieId={setCurrentMovieId}
               setCurrentTitle={setCurrentTitle}
               currentTitle={currentTitle}
+            />
+          )}
+          {showAllReview && (
+            <ReadReviews
+              movie_id={currentMovieId}
+              setShowReviewForm={setShowReviewForm}
+              setCurrentMovieId={setCurrentMovieId}
+              setCurrentTitle={setCurrentTitle}
+              currentTitle={currentTitle}
+              showAllReview={showAllReview}
+              setShowAllReview={setShowAllReview}
             />
           )}
           {movies.results?.length > 0 && (
