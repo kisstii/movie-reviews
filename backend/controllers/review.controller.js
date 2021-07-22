@@ -6,7 +6,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.getReviewsByUser = asyncHandler(async (req, res) => {
   const review = await Review.findOne({
-    userId: new ObjectId(req.params.id),
+    user: new ObjectId(req.params.id),
   });
 
   return review;
@@ -21,7 +21,9 @@ const initiaUsers = [
 exports.getReviewsByMovie = asyncHandler(async (req, res) => {
   const reviews = await Review.find({
     "reviews.movieId": req.params.id,
-  }).select({ userId: 1, "reviews.$": 1 });
+  })
+    .populate("user", "name picture")
+    .select({ "user": 1 , "reviews.$": 1 });
 
   res.json(reviews);
 });
@@ -50,7 +52,7 @@ exports.setReviewByMovie = asyncHandler(async (req, res) => {
     review.save();
   } else {
     const newReview = new Review({
-      userId: mongoose.Types.ObjectId(user._id),
+      user: mongoose.Types.ObjectId(user._id),
       user_id: user.user_id,
       reviews: [
         {
