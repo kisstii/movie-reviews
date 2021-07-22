@@ -100,7 +100,6 @@
   text-align: center;
   cursor: default;
   pointer-events: none;
-  user-select: none;
 }
 
 .loggedInText {
@@ -169,8 +168,8 @@
   border: none;
   border-radius: 5px 0 0 5px;
   z-index: 1;
-  user-select: auto;
   background-color: rgb(235, 235, 235);
+  user-select: text;
 }
 
 .inputData::placeholder {
@@ -205,10 +204,12 @@
 }
 
 .mainBodyContainer {
+  position: absolute;
   display: flex;
   justify-content: center;
   background-color: black;
-  width: 100vw;
+  width: 140vw;
+  left: -20vw;
   min-height: 100vh;
 }
 
@@ -253,8 +254,9 @@
 }
 
 .movieTitle {
-  position: relative;
+  position: absolute;
   padding: 3px 8px;
+  width: 300px;
   background-color: rgba(0, 0, 0, 0.6);
   text-shadow: 5 0 5px black, 0 0 8px black;
   color: white;
@@ -313,14 +315,14 @@
   justify-content: space-between;
   width: 260px;
   left: 20px;
-  top: 215px;
+  top: 240px;
 }
 
 .reviewButton {
   padding: 4px 4px 6px;
   width: 80px;
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
   border-radius: 5px;
@@ -340,9 +342,94 @@
   box-shadow: 0 0 7px white;
 }
 
-.reviewContainer {
+.mainReviewContainer {
   position: fixed;
-  width: 200px;
-  height: 200px;
+  top: 320px;
+  display: flex;
+  justify-content: space-between;
   z-index: 25;
+}
+
+.reviewContainer {
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  z-index: 25;
+  box-shadow: 0 0 3px white, 0 0 7px white, 0 0 15px white, 0 0 25px white, 0 0 37px white, 0 0 50px white;
+}
+
+.reviewTitle {
+  position: absolute;
+  bottom: 300px;
+  padding: 5px 10px;
+  min-height: 25px;
+  width: 500px;
+  background-color: rgb(255, 198, 188);
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.review {
+  display: flex;
+  width: 500px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.reviewData {
+  text-decoration: none;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 270px;
+  resize: none;
+  font-weight: 700;
+  font-family: "Lucida Console", "Courier New", monospace;
+  user-select: text;
+}
+
+.reviewData::placeholder {
+  color: gray;
+}
+
+.prevReviewData {
+  text-decoration: none;
+  padding: 5px 10px;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 270px;
+  resize: none;
+  user-select: text;
+  font-weight: 700;
+  font-family: "Lucida Console", "Courier New", monospace;
+  user-select: none;
+}
+
+.reviewFormButtonContainer {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewActionButton {
+  padding: 0 10px;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 0 7px white;
+}
+
+.reviewActionButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }

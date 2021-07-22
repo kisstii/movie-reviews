@@ -1,19 +1,14 @@
-import { useState } from "react";
-import ReviewForm from "./reviewForm";
-
-function Review({ movie_id }) {
-  const [showReviewForm, setShowReviewForm] = useState(false);
-
+function Review({ movie_id, setShowReviewForm, setCurrentMovieId, showReviewForm, movie_title, setCurrentTitle }) {
   return (
-    <>
-      <div className="reviewButtonContainer">
-        <button className="reviewButton" onClick={() => setShowReviewForm(true)}>
+    <div className="reviewButtonContainer">
+      {showReviewForm && <button className="reviewButton">write a review</button>}
+      {!showReviewForm && (
+        <button className="reviewButton" onClick={() => setShowReviewForm(true) + setCurrentMovieId(movie_id) + setCurrentTitle(movie_title)}>
           write a review
         </button>
-        <button className="reviewButton">read reviews</button>
-      </div>
-      {showReviewForm && <ReviewForm movie_id={movie_id} setShowReviewForm={setShowReviewForm} />}
-    </>
+      )}
+      <button className="reviewButton">read reviews</button>
+    </div>
   );
 }
 

@@ -4,6 +4,7 @@ import back from "../img/back.png";
 import next from "../img/next.png";
 import fastForward from "../img/fast-forward.png";
 import fastBackward from "../img/fast-backward.png";
+import ReviewForm from "./reviewForm";
 
 function MovieList() {
   const [search, setSearch] = useState("");
@@ -11,6 +12,9 @@ function MovieList() {
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [prevSearch, setPrevSearch] = useState("");
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [currentMovieId, setCurrentMovieId] = useState("");
+  const [currentTitle, setCurrentTitle] = useState("");
 
   const searchMovieFirst = () => {
     const token = localStorage.getItem("accessToken");
@@ -81,7 +85,28 @@ function MovieList() {
       <div className="mainBodyContainer">
         <div className="bodyContainer">
           {movies.results?.length > 0 &&
-            movies.results.map((movie) => <Movie key={movie.id} title={movie.title} movie_id={movie.id} backdrop_path={movie.backdrop_path} poster_path={movie.poster_path} />)}
+            movies.results.map((movie) => (
+              <Movie
+                key={movie.id}
+                movie_title={movie.title}
+                movie_id={movie.id}
+                backdrop_path={movie.backdrop_path}
+                poster_path={movie.poster_path}
+                setShowReviewForm={setShowReviewForm}
+                showReviewForm={showReviewForm}
+                setCurrentMovieId={setCurrentMovieId}
+                setCurrentTitle={setCurrentTitle}
+              />
+            ))}
+          {showReviewForm && (
+            <ReviewForm
+              movie_id={currentMovieId}
+              setShowReviewForm={setShowReviewForm}
+              setCurrentMovieId={setCurrentMovieId}
+              setCurrentTitle={setCurrentTitle}
+              currentTitle={currentTitle}
+            />
+          )}
           {movies.results?.length > 0 && (
             <div className="paginatorContainer">
               <div className="arrowContainer">
