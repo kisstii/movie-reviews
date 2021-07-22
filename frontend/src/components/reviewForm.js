@@ -1,16 +1,18 @@
 import { useState } from "react";
 
-function ReviewForm() {
+function ReviewForm({ movie_id }) {
   const [newReview, setNewReview] = useState("");
 
   const createNewReview = () => {
-    fetch("/api/groups/create", {
+    const token = localStorage.getItem("accessToken");
+    fetch(`/api/review/movie${movie_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: token,
       },
       body: JSON.stringify({
-        search: newReview,
+        review: newReview,
       }),
     })
       .then((response) => response.json())
@@ -31,9 +33,6 @@ function ReviewForm() {
             Add review
           </button>
         </form>
-      </div>
-      <div className="alertBar">
-        <p className="alert">{alert}</p>
       </div>
     </>
   );
