@@ -28,17 +28,6 @@ exports.getReviewsByMovie = asyncHandler(async (req, res) => {
 
 exports.setReviewByMovie = asyncHandler(async (req, res) => {
   const user = await User.findOne({ user_id: req.user.user_id });
-  
-  const newReview = new Review({
-    userId: mongoose.Types.ObjectId(user._id),
-    user_id: user.user_id,
-    reviews: [
-      {
-        "movieId": req.params.id,
-        "review": req.body.review
-      }
-    ],
-  });
 
   const review = await Review.findOne({ user_id: user.user_id });
   if (review) {
@@ -46,10 +35,33 @@ exports.setReviewByMovie = asyncHandler(async (req, res) => {
       movieId: req.params.id,
       review: req.body.review,
     };
-    await Review.findOneAndUpdate({ "user_id": user.user_id, "reviews.movieId": req.params.id}, { $push: new_review });
+
+    const i = review.reviews.findIndex(
+      (item) => item.movieId === parseInt(req.params.id)
+    );
+    if (i >= 0) {
+      review.reviews[i].review = req.body.review;
+    } else {
+      review.reviews.push({
+        movieId: req.params.id,
+        review: req.body.review,
+      });
+    }
+    review.save();
   } else {
-    await newReview.save();  
+    const newReview = new Review({
+      userId: mongoose.Types.ObjectId(user._id),
+      user_id: user.user_id,
+      reviews: [
+        {
+          movieId: req.params.id,
+          review: req.body.review,
+        },
+      ],
+    });
+
+    await newReview.save();
   }
-  
-  res.json({ "message": "OK" });
+
+  res.json({ message: "OK" });
 });
