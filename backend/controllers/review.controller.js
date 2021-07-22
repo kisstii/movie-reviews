@@ -5,38 +5,33 @@ const mongoose = require("mongoose");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.getReviewUsers = asyncHandler(async (req, res) => {
-  res.json({"message": "under development"})
+  res.json({ message: "under development" });
 });
 
 exports.getReviewsByUser = asyncHandler(async (req, res) => {
   // const review = await Review.findOne({
   //   user: new ObjectId(req.params.id),
   // });
-  
-  res.json({"message": "under development"})  
+
+  res.json({ message: "under development" });
 });
 
 exports.getMyReviews = asyncHandler(async (req, res) => {
-  if (req.params.id === "0") {
+  const filter = { user_id: req.user.user_id };
+  const select = { user: 1 };
 
-    res.json(
-      await Review.find({
-        user_id: req.user.user_id,
-      }).populate("user", "name picture")
-    );
-
+  if (req.params.id) {
+    filter["reviews.movieId"] = req.params.id;
+    select["reviews.$"] = 1;
   } else {
-
-    res.json(
-      await Review.find({
-        user_id: req.user.user_id,
-        "reviews.movieId": req.params.id,
-      })
-        .populate("user", "name picture")
-        .select({ user: 1, "reviews.$": 1 })
-    );
-
+    select["reviews"] = 1;
   }
+
+  const reviews = await Review.find(filter)
+    .populate("user", "name picture")
+    .select(select);
+
+  res.json(reviews);
 });
 
 exports.getReviewsByMovie = asyncHandler(async (req, res) => {

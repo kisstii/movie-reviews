@@ -26,6 +26,14 @@ router.get(
   reviewController.getReviewsByMovie
 );
 
+
+// visszadja a bejelentkezett felhasználó összes review-ját
+router.get(
+  "/reviews",
+  checkAuthorization,
+  reviewController.getMyReviews
+);
+
 // visszadja hogy az adott filmhez milyen review-t írt a bejelentkezett felhasználó
 router.get(
   "/review/movie/:id",
