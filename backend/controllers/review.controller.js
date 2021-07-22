@@ -50,7 +50,6 @@ exports.setReviewByMovie = asyncHandler(async (req, res) => {
   } else {
     await newReview.save();  
   }
-
   
-  res.json({ review, user, movieId });
+  res.json({ "message": "OK" });
 });
