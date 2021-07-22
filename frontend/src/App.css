@@ -282,6 +282,7 @@
 .arrow {
   height: 25px;
   margin: 0 5px;
+  cursor: pointer;
 }
 
 .arrow:hover {
@@ -337,4 +338,11 @@
 .reviewButton:active {
   background-color: rgb(180, 180, 180);
   box-shadow: 0 0 7px white;
+}
+
+.reviewContainer {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  z-index: 25;
 }

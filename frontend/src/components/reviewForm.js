@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-function ReviewForm({ movie_id }) {
+function ReviewForm({ movie_id, setShowReviewForm }) {
   const [newReview, setNewReview] = useState("");
 
   const createNewReview = () => {
     const token = localStorage.getItem("accessToken");
-    fetch(`/api/review/movie${movie_id}`, {
+    fetch(`http://localhost:8000/api/review/movie/${movie_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,9 @@ function ReviewForm({ movie_id }) {
     })
       .then((response) => response.json())
       .then((result) => {
+        console.log(result);
         setNewReview("");
+        setShowReviewForm(false);
       })
       .catch((error) => {
         console.error(error);
@@ -25,16 +27,14 @@ function ReviewForm({ movie_id }) {
   };
 
   return (
-    <>
-      <div className="formContainer">
-        <form className="form">
-          <textarea className="inputData" type="text" placeholder="write a review" value={newReview} onInput={(e) => setNewReview(e.target.value)} />
-          <button type="submit" className="actionButton" onClick={createNewReview}>
-            Add review
-          </button>
-        </form>
-      </div>
-    </>
+    <div className="reviewContainer">
+      <form className="review">
+        <textarea className="reviewData" type="text" placeholder="write a review" value={newReview} onInput={(e) => setNewReview(e.target.value)} />
+        <button type="button" className="reviewActionButton" onClick={createNewReview}>
+          send review
+        </button>
+      </form>
+    </div>
   );
 }
 
