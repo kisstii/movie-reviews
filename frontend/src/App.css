@@ -208,7 +208,7 @@
 .mainBodyContainer {
   display: flex;
   justify-content: center;
-  /* background-color: black; */
+  background-color: black;
   width: 100vw;
   min-height: 100vh;
 }
