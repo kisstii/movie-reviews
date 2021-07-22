@@ -2,18 +2,27 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/user");
 const Review = require("../models/review.model");
 const mongoose = require("mongoose");
-const ObjectId = require("mongoose").Types.ObjectId;
 
 exports.getReviewUsers = asyncHandler(async (req, res) => {
-  res.json({ message: "under development" });
+  const filter = {};
+  const select = { user: 1 };
+
+  const reviewusers = await Review.find(filter)
+    .populate("user", "name picture")
+    .select(select);
+
+  res.json(reviewusers);
 });
 
 exports.getReviewsByUser = asyncHandler(async (req, res) => {
-  // const review = await Review.findOne({
-  //   user: new ObjectId(req.params.id),
-  // });
+  const filter = { _id: req.params.id };
+  const select = { user: 1, reviews:1 };
 
-  res.json({ message: "under development" });
+  const reviews = await Review.find(filter)
+    .populate("user", "name picture")
+    .select(select);
+
+  res.json(reviews);
 });
 
 exports.getMyReviews = asyncHandler(async (req, res) => {

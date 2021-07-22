@@ -3,15 +3,13 @@ const router = require("express").Router();
 const checkAuthorization = require("../middlewares/checkAuthorization");
 const reviewController = require("../controllers/review.controller");
 
-//TODO: még nem műxik
-// visszadja, a felhasználókat akik írtak reviewt
+// visszadja a felhasználókat akik írtak reviewt
 router.get(
   "/reviews/users",
   checkAuthorization,
   reviewController.getReviewUsers
 );
 
-//TODO: még nem műxik
 // visszadja, hogy egy adott felhasználó milyen review-kat írt
 router.get(
   "/reviews/user/:id",
