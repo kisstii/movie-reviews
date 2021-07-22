@@ -11,7 +11,8 @@ const verifyJwt = (token) => {
 };
 
 module.exports = asyncHandler(async (req, res, next) => {
-  if (process.env.JWT_NOCHECK === "false") {
+  console.log(process.env.JWT_NOCHECK);
+  if (process.env.JWT_NOCHECK !== "true") {
     try {      
       const authorization = req.headers["authorization"];
       req.user = await verifyJwt(authorization);
