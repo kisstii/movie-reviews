@@ -7,7 +7,7 @@ import fastBackward from "../img/fast-backward.png";
 
 function MovieList() {
   const [search, setSearch] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState({});
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [prevSearch, setPrevSearch] = useState("");
@@ -26,7 +26,6 @@ function MovieList() {
         setMovies(result);
         setPage(1);
         setNumberOfPages(result.total_pages);
-        console.log(result);
         setSearch("");
       })
       .catch((error) => {
@@ -47,7 +46,6 @@ function MovieList() {
       .then((result) => {
         setMovies(result);
         setNumberOfPages(result.total_pages);
-        console.log(result);
         setSearch("");
       })
       .catch((error) => {
@@ -82,9 +80,9 @@ function MovieList() {
       <div className="alertBar"></div>
       <div className="mainBodyContainer">
         <div className="bodyContainer">
-          {movies.results.length > 0 &&
+          {movies.hasOwnProperty("results") &&
             movies.results.map((movie) => <Movie key={movie.id} title={movie.title} id={movie.id} backdrop_path={movie.backdrop_path} poster_path={movie.poster_path} />)}
-          {movies.results.length > 0 && (
+          {movies.hasOwnProperty("results") && movies.results.length > 0 && (
             <div className="paginatorContainer">
               <div className="arrowContainer">
                 <img className="arrow" src={fastBackward} alt="fast backward" onClick={() => setPage(1)} />
