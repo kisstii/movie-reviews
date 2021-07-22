@@ -4,26 +4,47 @@ const Review = require("../models/review.model");
 const mongoose = require("mongoose");
 const ObjectId = require("mongoose").Types.ObjectId;
 
-exports.getReviewsByUser = asyncHandler(async (req, res) => {
-  const review = await Review.findOne({
-    user: new ObjectId(req.params.id),
-  });
-
-  return review;
+exports.getReviewUsers = asyncHandler(async (req, res) => {
+  res.json({"message": "under development"})
 });
 
-const initiaUsers = [
-  {
-    username: "public",
-  },
-];
+exports.getReviewsByUser = asyncHandler(async (req, res) => {
+  // const review = await Review.findOne({
+  //   user: new ObjectId(req.params.id),
+  // });
+  
+  res.json({"message": "under development"})  
+});
+
+exports.getMyReviews = asyncHandler(async (req, res) => {
+  if (req.params.id === "0") {
+
+    res.json(
+      await Review.find({
+        user_id: req.user.user_id,
+      }).populate("user", "name picture")
+    );
+
+  } else {
+
+    res.json(
+      await Review.find({
+        user_id: req.user.user_id,
+        "reviews.movieId": req.params.id,
+      })
+        .populate("user", "name picture")
+        .select({ user: 1, "reviews.$": 1 })
+    );
+
+  }
+});
 
 exports.getReviewsByMovie = asyncHandler(async (req, res) => {
   const reviews = await Review.find({
     "reviews.movieId": req.params.id,
   })
     .populate("user", "name picture")
-    .select({ "user": 1 , "reviews.$": 1 });
+    .select({ user: 1, "reviews.$": 1 });
 
   res.json(reviews);
 });
