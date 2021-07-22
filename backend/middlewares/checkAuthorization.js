@@ -15,7 +15,6 @@ module.exports = asyncHandler(async (req, res, next) => {
     try {      
       const authorization = req.headers["authorization"];
       req.user = await verifyJwt(authorization);
-
     } catch (err) {
       throw { message: "Unauthorized", status: 401 };
     }
