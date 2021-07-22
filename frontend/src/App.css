@@ -60,11 +60,10 @@
   font-size: 1.2em;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 0 7px rgba(255, 255, 255, 0.5);
 }
 
 .link:hover {
-  box-shadow: none;
+  box-shadow: 0 0 2px white, 0 0 6px white, 0 0 10px white;
 }
 
 .link:active {
@@ -285,6 +284,12 @@
   margin: 0 5px;
 }
 
+.arrow:hover {
+  transform: scale(0.9);
+  background-color: rgba(0, 128, 128, 0.25);
+  border-radius: 10px;
+}
+
 .pageNumber {
   font-size: 1.25rem;
   transform: translate(0, -3px);
@@ -292,7 +297,7 @@
 
 .bottomBar {
   position: fixed;
-  left: -10vw;
+  left: -200px;
   bottom: 0;
   height: 45px;
   width: 120vw;
