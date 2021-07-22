@@ -1,5 +1,9 @@
 function Home() {
-  return <></>;
+  return (
+    <>
+      <div className="mainBodyContainer"></div>
+    </>
+  );
 }
 
 export default Home;

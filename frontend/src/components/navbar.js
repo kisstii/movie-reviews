@@ -8,14 +8,14 @@ function Navbar({ username, userPicture }) {
       </NavLink>
 
       {username && (
-        <NavLink to="/review" className="link" activeClassName="linkActive">
-          Review
+        <NavLink to="/movies" className="link" activeClassName="linkActive">
+          Movies
         </NavLink>
       )}
 
       {!username && (
-        <NavLink to="/review" className="linkHidden">
-          Review
+        <NavLink to="/movies" className="linkHidden">
+          Movies
         </NavLink>
       )}
 

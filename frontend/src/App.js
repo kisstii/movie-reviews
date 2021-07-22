@@ -2,7 +2,7 @@ import "./App.css";
 import jwt_decode from "jwt-decode";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
-import Review from "./components/review";
+import MovieList from "./components/movieList";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import { Route } from "react-router-dom";
@@ -31,8 +31,8 @@ function App() {
       <Route exact path="/home">
         <Home />
       </Route>
-      <Route exact path="/review">
-        <Review />
+      <Route exact path="/movies">
+        <MovieList />
       </Route>
       <Route exact path="/login" component={() => <Login setUsername={setUsername} setUserPicture={setUserPicture} setIsLoggedIn={setIsLoggedIn} />} />
       <Route exact path="/logout" component={() => <Logout setUsername={setUsername} setUserPicture={setUserPicture} setIsLoggedIn={setIsLoggedIn} />} />
