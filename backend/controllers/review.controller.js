@@ -22,7 +22,7 @@ exports.getReviewsByMovie = asyncHandler(async (req, res) => {
   const reviews = await Review.find({
     "reviews.movieId": req.params.id,
   })
-    .populate("user")
+    .populate("user", "name picture")
     .select({ "user": 1 , "reviews.$": 1 });
 
   res.json(reviews);
