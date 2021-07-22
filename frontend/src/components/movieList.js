@@ -82,9 +82,9 @@ function MovieList() {
       <div className="alertBar"></div>
       <div className="mainBodyContainer">
         <div className="bodyContainer">
-          {movies.results &&
+          {movies.results.length > 0 &&
             movies.results.map((movie) => <Movie key={movie.id} title={movie.title} id={movie.id} backdrop_path={movie.backdrop_path} poster_path={movie.poster_path} />)}
-          {movies.results[0] && (
+          {movies.results.length > 0 && (
             <div className="paginatorContainer">
               <div className="arrowContainer">
                 <img className="arrow" src={fastBackward} alt="fast backward" onClick={() => setPage(1)} />
