@@ -1,0 +1,13 @@
+os: linux
+dist: focal
+language: node_js
+
+node_js: node
+
+install: npm install --production=false
+script:
+-	npx prettier --write frontend/
+-	npx prettier --write backend/
+after_success:
+-	docker build frontend/
+-	docker build backend/ -e PORT="$(grep PORT backend/.env | cut -d = -f 2)"
