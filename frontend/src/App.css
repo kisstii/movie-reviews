@@ -213,11 +213,21 @@
   min-height: 100vh;
 }
 
+.homeBackground {
+  background-image: url("./img/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
 .bodyContainer {
   padding: 160px 0 90px;
   display: flex;
   justify-content: center;
-  width: 90vw;
+  width: 92vw;
   flex-wrap: wrap;
 }
 
@@ -255,7 +265,8 @@
 .movieTitle {
   position: absolute;
   padding: 3px 8px;
-  width: 300px;
+  width: 298px;
+  margin-left: 1px;
   background-color: rgba(0, 0, 0, 0.6);
   text-shadow: 5 0 5px black, 0 0 8px black;
   color: white;
@@ -407,7 +418,10 @@
   user-select: text;
   font-weight: 700;
   font-family: "Lucida Console", "Courier New", monospace;
+  letter-spacing: -0.1em;
   user-select: none;
+  cursor: default;
+  text-align: justify;
 }
 
 .reviewFormButtonContainer {
@@ -432,4 +446,35 @@
 
 .reviewActionButton:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.otherReviewData {
+  margin: 5px 0 20px;
+}
+
+.reviewerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px;
+  width: 230px;
+  height: 60px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 3px white, 0 0 7px white, 0 0 15px white, 0 0 25px white, 0 0 37px white, 0 0 50px white;
+}
+
+.reviewerNameContainer {
+  width: 145px;
+  margin-left: 15px;
+}
+
+.reviwerName {
+  font-size: 1.2em;
+}
+
+.reviewerPicture {
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
 }

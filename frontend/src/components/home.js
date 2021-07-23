@@ -1,7 +1,7 @@
 function Home() {
   return (
     <>
-      <div className="mainBodyContainer"></div>
+      <div className="homeBackground"></div>
     </>
   );
 }

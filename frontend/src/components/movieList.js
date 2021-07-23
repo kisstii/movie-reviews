@@ -16,7 +16,7 @@ function MovieList() {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [currentMovieId, setCurrentMovieId] = useState("");
   const [currentTitle, setCurrentTitle] = useState("");
-  const [showAllReview, setShowAllReview] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   const searchMovieFirst = () => {
     const token = localStorage.getItem("accessToken");
@@ -83,7 +83,6 @@ function MovieList() {
           </button>
         </div>
       </div>
-      <div className="alertBar"></div>
       <div className="mainBodyContainer">
         <div className="bodyContainer">
           {movies.results?.length > 0 &&
@@ -98,7 +97,8 @@ function MovieList() {
                 showReviewForm={showReviewForm}
                 setCurrentMovieId={setCurrentMovieId}
                 setCurrentTitle={setCurrentTitle}
-                setShowAllReview={setShowAllReview}
+                setShowAllReviews={setShowAllReviews}
+                showAllReviews={showAllReviews}
               />
             ))}
           {showReviewForm && (
@@ -110,15 +110,15 @@ function MovieList() {
               currentTitle={currentTitle}
             />
           )}
-          {showAllReview && (
+          {showAllReviews && (
             <ReadReviews
               movie_id={currentMovieId}
               setShowReviewForm={setShowReviewForm}
               setCurrentMovieId={setCurrentMovieId}
               setCurrentTitle={setCurrentTitle}
               currentTitle={currentTitle}
-              showAllReview={showAllReview}
-              setShowAllReview={setShowAllReview}
+              showAllReviews={showAllReviews}
+              setShowAllReviews={setShowAllReviews}
             />
           )}
           {movies.results?.length > 0 && (

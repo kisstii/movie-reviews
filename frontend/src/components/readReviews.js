@@ -1,7 +1,9 @@
+import OtherReview from "./otherReview";
+import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 
-function ReadReviews({ movie_id, setCurrentMovieId, setCurrentTitle, currentTitle, showAllReview, setShowAllReview }) {
-  const [allReview, setAllReview] = useState("");
+function ReadReviews({ movie_id, setCurrentTitle, currentTitle, setShowAllReviews }) {
+  const [allReviews, setAllReviews] = useState("");
 
   const getAllReview = () => {
     const token = localStorage.getItem("accessToken");
@@ -14,16 +16,12 @@ function ReadReviews({ movie_id, setCurrentMovieId, setCurrentTitle, currentTitl
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-        setAllReview(result);
-        setCurrentMovieId("");
+        setAllReviews(result);
       })
       .catch((error) => {
         console.error(error);
       });
   };
-
-  // console.log(allReview);
 
   useEffect(() => {
     getAllReview();
@@ -32,15 +30,23 @@ function ReadReviews({ movie_id, setCurrentMovieId, setCurrentTitle, currentTitl
 
   return (
     <div className="mainReviewContainer">
-      {showAllReview && (
-        <div className="reviewContainer">
-          <div className="reviewTitle">{currentTitle}</div>
-          <form className="review"></form>
-          <button type="button" className="reviewActionButton" onClick={() => setShowAllReview(false) + setCurrentTitle("")}>
-            close
-          </button>
-        </div>
-      )}
+      <div className="reviewContainer">
+        <div className="reviewTitle">{currentTitle}</div>
+        <form className="review">
+          <div className="prevReviewData">
+            {allReviews[0] &&
+              allReviews.map((review) => (
+                <OtherReview key={uuidv4()} review={review.reviews[0].review} username={`${review.user.name.family_name} ${review.user.name.given_name}`} />
+              ))}
+            {!allReviews[0] && <OtherReview />}
+          </div>
+          <div className="reviewFormButtonContainer">
+            <button type="button" className="reviewActionButton" onClick={() => setShowAllReviews(false) + setCurrentTitle("") + setAllReviews("")}>
+              close
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
