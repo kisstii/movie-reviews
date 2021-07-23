@@ -90,5 +90,5 @@ exports.setReviewByMovie = asyncHandler(async (req, res) => {
     await newReview.save();
   }
 
-  res.json({ message: "OK" });
+  res.json({ message: "Review saved." });
 });
