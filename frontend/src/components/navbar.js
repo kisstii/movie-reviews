@@ -19,6 +19,18 @@ function Navbar({ username, userPicture }) {
         </NavLink>
       )}
 
+      {username && (
+        <NavLink to="/reviewers" className="link" activeClassName="linkActive">
+          Reviewers
+        </NavLink>
+      )}
+
+      {!username && (
+        <NavLink to="/reviewers" className="linkHidden">
+          Reviewers
+        </NavLink>
+      )}
+
       <div className="loginContainer">
         {!username && (
           <NavLink to="/login" className="linkLogin">

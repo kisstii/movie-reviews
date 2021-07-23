@@ -83,7 +83,6 @@ function MovieList() {
           </button>
         </div>
       </div>
-      <div className="alertBar"></div>
       <div className="mainBodyContainer">
         <div className="bodyContainer">
           {movies.results?.length > 0 &&
