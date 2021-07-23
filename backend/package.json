@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "jest",
+    "test:updateSnapshot": "jest --updateSnapshot",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +28,9 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "jest": "^27.0.6",
+    "mongodb-memory-server": "^7.3.1",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.4"
   }
 }
