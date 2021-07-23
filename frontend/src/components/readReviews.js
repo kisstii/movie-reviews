@@ -2,7 +2,7 @@ import OtherReview from "./otherReview";
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 
-function ReadReviews({ movie_id, setCurrentMovieId, setCurrentTitle, currentTitle, showAllReviews, setShowAllReviews }) {
+function ReadReviews({ movie_id, setCurrentTitle, currentTitle, setShowAllReviews }) {
   const [allReviews, setAllReviews] = useState("");
 
   const getAllReview = () => {
@@ -34,10 +34,11 @@ function ReadReviews({ movie_id, setCurrentMovieId, setCurrentTitle, currentTitl
         <div className="reviewTitle">{currentTitle}</div>
         <form className="review">
           <div className="prevReviewData">
-            {allReviews?.length &&
+            {allReviews[0] &&
               allReviews.map((review) => (
-                <OtherReview key={uuidv4()} review={review.reviews[0].review} username={`${review.user.name.given_name} ${review.user.name.family_name}`} />
+                <OtherReview key={uuidv4()} review={review.reviews[0].review} username={`${review.user.name.family_name} ${review.user.name.given_name}`} />
               ))}
+            {!allReviews[0] && <OtherReview />}
           </div>
           <div className="reviewFormButtonContainer">
             <button type="button" className="reviewActionButton" onClick={() => setShowAllReviews(false) + setCurrentTitle("") + setAllReviews("")}>

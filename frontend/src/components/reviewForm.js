@@ -38,7 +38,9 @@ function ReviewForm({ movie_id, setShowReviewForm, setCurrentMovieId, setCurrent
     })
       .then((response) => response.json())
       .then((result) => {
-        setPrevReview(result[0].reviews[0].review);
+        if (result[0]) {
+          setPrevReview(result[0].reviews[0].review);
+        }
       })
       .catch((error) => {
         console.error(error);
