@@ -7,7 +7,7 @@ function ReviewerList() {
   const [allReviewers, setAllReviewers] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
   const [reviewerName, setReviewerName] = useState("");
-	const [showAllReviews, setShowAllReviews] = useState(false)
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   const getAllReviewers = () => {
     const token = localStorage.getItem("accessToken");
@@ -21,7 +21,6 @@ function ReviewerList() {
       .then((response) => response.json())
       .then((result) => {
         setAllReviewers(result);
-				
       })
       .catch((error) => {
         console.error(error);
@@ -45,7 +44,6 @@ function ReviewerList() {
       .then((response) => response.json())
       .then((result) => {
         setAllReviews(result);
-				
       })
       .catch((error) => {
         console.error(error);
@@ -59,21 +57,23 @@ function ReviewerList() {
       </div>
       <div className="mainBodyContainer">
         <div className="bodyContainer">
-
-          {allReviewers[0] && !showAllReviews &&
+          {allReviewers[0] &&
+            !showAllReviews &&
             allReviewers.map((reviewer) => (
-              <Reviewer key={uuidv4()} reviewer={reviewer}  getReviewerAllReview={getReviewerAllReview} setReviewerName={setReviewerName} setShowAllReviews={setShowAllReviews}/>
+              <Reviewer key={uuidv4()} reviewer={reviewer} getReviewerAllReview={getReviewerAllReview} setReviewerName={setReviewerName} setShowAllReviews={setShowAllReviews} />
             ))}
-						{allReviews[0] && showAllReviews &&
-							<div className="mainAllReviewsContainer" >
-								<div className="reviwerNameOnList">{reviewerName}</div>
-								{allReviews[0].reviews.map((review) => <ReviewerAllReviews key={uuidv4()} review={review} setShowAllReviews={setShowAllReviews}/>)}
-								<button type="button" className="reviewsCloseButton" onClick={() => setShowAllReviews(false) + setAllReviews([])}>
-									close
-								</button>
-							</div>
-						}
-					<div className="bottomBar"></div>
+          {allReviews[0] && showAllReviews && (
+            <div className="mainAllReviewsContainer">
+              <div className="reviwerNameOnList">{reviewerName}</div>
+              {allReviews[0].reviews.map((review) => (
+                <ReviewerAllReviews key={uuidv4()} review={review} setShowAllReviews={setShowAllReviews} />
+              ))}
+              <button type="button" className="reviewsCloseButton" onClick={() => setShowAllReviews(false) + setAllReviews([])}>
+                close
+              </button>
+            </div>
+          )}
+          <div className="bottomBar"></div>
         </div>
       </div>
     </>
